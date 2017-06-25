@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.codearte.jfairy.Fairy;
+import io.codearte.jfairy.producer.company.Company;
 import io.codearte.jfairy.producer.person.Address;
 import io.codearte.jfairy.producer.person.Person;
 
@@ -19,10 +20,17 @@ public class FakerRestController {
 	ObjectMapper mapper =new ObjectMapper();
 	
 	@GetMapping(value="/address")
-	public @ResponseBody Address getGameOfThrones() throws JsonProcessingException{
+	public @ResponseBody Address getAddress() throws JsonProcessingException{
 		Fairy fairy = Fairy.create();
 		Person person = fairy.person();
 		return person.getAddress();
+	}
+	
+	@GetMapping(value="/company")
+	public @ResponseBody Company getCompany() throws JsonProcessingException{
+		Fairy fairy = Fairy.create();
+		Person person = fairy.person();
+		return person.getCompany();
 	}
 
 }
