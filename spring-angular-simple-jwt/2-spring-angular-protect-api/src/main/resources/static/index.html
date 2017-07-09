@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+<html lang="en" ng-app="app">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Random Address</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body ng-controller="MainCtrl">
+<div class="container">
+	<h1>JWT Spring Security Demo</h1>
+	
+	<div class="alert alert-danger" ng-show="!isLoggedIn" >Not logged in!</div>
+
+    <div class="alert alert-info text-hidden" ng-show="isLoggedIn"></div>
+		
+<div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default" id="login" ng-show="!isLoggedIn">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Login</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="username"
+                                   required name="username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                   placeholder="password" required name="password">
+                        </div>
+                        <div class="well">
+                            Try one of the following logins
+                            <ul>
+                                <li>admin & passsword</li>
+                                <li>user & password</li>
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn btn-default">login</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="userInfo" ng-show="isLoggedIn">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Authenticated user</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="userInfoBody"></div>
+                        <button type="button" class="btn btn-default" id="logoutButton">logout</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <div class="col-md-6">
+            <div class="btn-group" role="group" aria-label="..." style="margin-bottom: 16px;">
+                <button type="button" class="btn btn-default" ng-click="getRandomAddress()">Get Random Address</button>
+                <button type="button" class="btn btn-default" ng-click="getRandomCompany()">Get Random Company</button>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Response:</h3>
+                </div>
+                <div class="panel-body">
+                	
+                    <pre ng-bind="resCode"></pre>
+                    
+                    <pre ng-bind="resData | json"> </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+			
+				
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
