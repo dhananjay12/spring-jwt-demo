@@ -16,7 +16,7 @@
 	
 	<div class="alert alert-danger" ng-show="!isLoggedIn" >Not logged in!</div>
 
-    <div class="alert alert-info text-hidden" ng-show="isLoggedIn"></div>
+    <div class="alert alert-info text-hidden" ng-show="isLoggedIn">Token = {{token}}</div>
 		
 <div class="row">
         <div class="col-md-6">
@@ -28,20 +28,21 @@
                     <form id="loginForm">
                         <div class="form-group">
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="username"
-                                   required name="username">
+                                   required name="username" ng-model="authRequest.username">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="password" required name="password">
+                                   placeholder="password" required name="password" ng-model="authRequest.password">
                         </div>
                         <div class="well">
                             Try one of the following logins
                             <ul>
-                                <li>admin & passsword</li>
-                                <li>user & password</li>
+                                <li>admin & admin</li>
+                                <li>user & user</li>
                             </ul>
                         </div>
-                        <button type="submit" class="btn btn-default">login</button>
+                       <div class="alert alert-danger" ng-show="invalidLoginMessage" >{{invalidLoginMessage}}</div>
+                        <button type="submit" class="btn btn-default" ng-click="login()">login</button>
                     </form>
                 </div>
             </div>
@@ -53,7 +54,7 @@
                     </div>
                     <div class="panel-body">
                         <div id="userInfoBody"></div>
-                        <button type="button" class="btn btn-default" id="logoutButton">logout</button>
+                        <button type="button" class="btn btn-default" ng-click="logout()">logout</button>
                     </div>
                 </div>
             </div> 
